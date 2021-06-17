@@ -1,0 +1,15 @@
+{
+  "out": "docs",
+  "ignoreCompilerErrors": true,
+  "excludePrivate": true,
+  "excludeNotExported": true,
+  "target": "ES6",
+  "moduleResolution": "node",
+  "preserveConstEnums": "true",
+  "stripInternal": true,
+  "suppressExcessPropertyErrors": "true",
+  "suppressImplicitAnyIndexErrors": "true",
+  "module": "commonjs",
+  "excludeExternals": true,
+  "includeDeclarations": false
+}

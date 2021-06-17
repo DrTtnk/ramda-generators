@@ -1,0 +1,128 @@
+{
+  "name": "ramda-generators",
+  "version": "0.4.1",
+  "description": "",
+  "keywords": [
+    "ramda",
+    "generators",
+    "funcional",
+    "funcional programming",
+    "async",
+    "utils",
+    "utilities"
+  ],
+  "main": "dist/ramda-generators.umd.js",
+  "module": "dist/ramda-generators.es5.js",
+  "typings": "dist/types/ramda-generators.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Dr-zefiro <pietrobelgioco@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DrTtnk/ramda-generators"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "lint": "eslint -c .eslintrc.js ./src/**/* --fix",
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.prod.json --module commonjs && rollup -c rollup.config.ts && typedoc --theme minimal --mode file src",
+    "start": "rollup -c rollup.config.ts -w",
+    "test": "export NODE_ENV=test && npx jest --forceExit --detectOpenHandles --silent",
+    "test:watch": "export NODE_ENV=test && npx jest --watch",
+    "test:mutation": "export MUTATION_TEST=1 && stryker run",
+    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "deploy-docs": "ts-node tools/gh-pages-publish",
+    "commit": "git-cz",
+    "npPublish": "npm run build && npm run lint && git add * && git status && npm run commit && git push && np",
+    "semantic-release": "semantic-release",
+    "semantic-release-prepare": "ts-node tools/semantic-release-prepare"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@stryker-mutator/core": "^2.4.0",
+    "@stryker-mutator/html-reporter": "^2.4.0",
+    "@stryker-mutator/jest-runner": "^2.4.0",
+    "@stryker-mutator/typescript": "^2.4.0",
+    "@types/chai": "^4.2.7",
+    "@types/chai-as-promised": "^7.1.2",
+    "@types/eslint": "^6.1.3",
+    "@types/jest": "^24.0.25",
+    "@types/lodash.camelcase": "^4.3.6",
+    "@types/node": "^13.1.6",
+    "@types/prettier": "^1.19.0",
+    "@types/ramda": "^0.26.39",
+    "@types/rimraf": "^2.0.3",
+    "@types/rollup-plugin-json": "^3.0.2",
+    "@types/semantic-release": "^15.13.1",
+    "@types/shelljs": "^0.8.6",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "colors": "^1.4.0",
+    "commitizen": "^4.0.3",
+    "coveralls": "^3.0.9",
+    "cross-env": "^6.0.3",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-arca": "^0.9.5",
+    "eslint-plugin-chai-expect": "^2.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.2.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-optimize-regex": "^1.1.7",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-ramda": "^2.5.1",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "eslint-plugin-unicorn": "^15.0.1",
+    "jest": "^24.9.0",
+    "jest-config": "^24.9.0",
+    "jest-mock": "^24.9.0",
+    "jest-runner-eslint": "^0.7.5",
+    "jsverify": "^0.8.4",
+    "lint-staged": "^9.5.0",
+    "lodash.camelcase": "^4.3.0",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^5.0.2",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.5.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "semantic-release": "^17.2.3",
+    "shelljs": "^0.8.3",
+    "ts-jest": "^24.3.0",
+    "ts-node": "^8.6.1",
+    "tslint": "^5.20.1",
+    "tslint-config-standard": "^9.0.0",
+    "typedoc": "^0.15.8",
+    "typescript": "^3.7.4"
+  }
+}
